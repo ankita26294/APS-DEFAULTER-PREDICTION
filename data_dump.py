@@ -22,3 +22,4 @@ print(json_record[0])
 # we get json format data then insert data into mongodb
 client[DATABASE_NAME][COLLECTION_NAME].insert_many(json_record)
 
+
