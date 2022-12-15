@@ -1,6 +1,5 @@
 from sensor import utils
-from sensor.entity import config_entity
-from sensor.entity import artifact_entity
+from sensor.entity import artifact_entity,config_entity
 from sensor.exception import SensorException
 from sensor.logger import logging
 import os,sys
@@ -21,12 +20,11 @@ class DataIngestion:
         try:
             logging.info(f"Exporting collection data as pandas dataframe")
             #Exporting collection data as pandas dataframe
-            df:pd.DataFrame  = utils.get_collection_as_dataframe(
+            df:pd.DataFrame=utils.get_collection_as_dataframe(
                 database_name=self.data_ingestion_config.database_name, 
                 collection_name=self.data_ingestion_config.collection_name)
-
+            # print(df)
             logging.info("Save data in feature store")
-
             #replace na with Nan
             df.replace(to_replace="na",value=np.NAN,inplace=True)
 
