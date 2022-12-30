@@ -1,6 +1,8 @@
 import pandas as pd
+import numpy as np
 import os,sys
 import yaml
+import dill
 from sensor.logger import logging
 from sensor.exception import SensorException
 from sensor.config import mongo_client
@@ -81,4 +83,4 @@ def load_numpy_array_data(file_path: str) -> np.array:
         with open(file_path, "rb") as file_obj:
             return np.load(file_obj)
     except Exception as e:
-        raise SensorException(e, sys) from         
+        raise SensorException(e, sys)     
